@@ -11,7 +11,7 @@ let mainWindow;
 //() => { function to run when EVENT occurs }
 //this is event base programming, this is an event handler
 app.on('ready', () => {
-    //makes a new Main app window
+    //makes a new Main Window separate from the Electron App
     mainWindow = new BrowserWindow({
         webPreferences: {
             nodeIntegration: true
