@@ -10,6 +10,8 @@
         <button type='submit'>Get Info</button>
     </form>
 
+    <h1 id='result'></h1>
+
 <script>
     const electron = require('electron');
     //used to help communication btwn different running processes of app
@@ -19,8 +21,14 @@
         //prevents form from submitting itself without click
         event.preventDefault();
         //get info from input form to get file details          
-        const file = document.querySelector('input').files[0];
+        const { path } = document.querySelector('input').files[0];
+        //sends message to electron side of app, looks for ipcMain to receive message
+        ipcRenderer.send('video: submit', path);
 
+    });
+
+    ipcRenderer.on('video:metadata', (event, duration) => {
+        document.querySelector('#result').innerHTML = `Video is ${duration} seconds`;
     });
 </script>
 
