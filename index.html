@@ -1,0 +1,27 @@
+<head>
+</head>
+<body>
+    <h1>Video Info</h1>
+    <form>
+        <div>
+            <label>Select a Video</label>
+            <input type="file" accept="video/*" />
+        </div>
+        <button type='submit'>Get Info</button>
+    </form>
+
+<script>
+    const electron = require('electron');
+    //used to help communication btwn different running processes of app
+    const { ipcRenderer } = electron;
+    //selects the form tag and listens to the submit of the form
+    document.querySelector('form').addEventListener('submit', (event) => {
+        //prevents form from submitting itself without click
+        event.preventDefault();
+        //get info from input form to get file details          
+        const file = document.querySelector('input').files[0];
+
+    });
+</script>
+
+</body>
